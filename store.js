@@ -1,181 +1,3 @@
-<!DOCTYPE html>
-<html lang='en'>
-<head>
-    <meta charset='utf-8' />
-    <title>Add custom markers in Mapbox GL JS</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1' />
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.js'></script>
-    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.css' rel='stylesheet' />
-    <style>
-  * {
-    box-sizing: border-box;
-  }
-  
-  body {
-    color: #404040;
-    font: 400 15px/22px 'Crimson Italic', 'Crimson Italic', serif;
-    margin: 0;
-    padding: 0;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  h1 {
-    font-size: 22px;
-    margin: 0;
-    font-weight: 400;
-    line-height: 20px;
-    padding: 20px 2px;
-  }
-
-  a {
-    color: #404040;
-    text-decoration: none;
-  }
-
-  a:hover {
-    color: #101010;
-  }
-
-  /* The page is split between map and sidebar - the sidebar gets 1/3, map
-  gets 2/3 of the page. You can adjust this to your personal liking. */
-  .sidebar {
-    position: absolute;
-    width: 33.3333%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    overflow: hidden;
-    border-right: 1px solid rgba(0, 0, 0, 0.25);
-  }
-
-  .map {
-    position: absolute;
-    left: 33.3333%;
-    width: 66.6666%;
-    top: 0;
-    bottom: 0;
-  }
-
-  .heading {
-    background: #fff;
-    border-bottom: 1px solid #eee;
-    height: 60px;
-    line-height: 60px;
-    padding: 0 10px;
-  }
-      .listings {
-  height: 100%;
-  overflow: auto;
-  padding-bottom: 60px;
-}
-
-.listings .item {
-  border-bottom: 1px solid #eee;
-  padding: 10px;
-  text-decoration: none;
-}
-
-.listings .item:last-child { border-bottom: none; }
-
-.listings .item .title {
-  display: block;
-  color: #cddcde;
-  font-weight: 700;
-}
-
-.listings .item .title small { font-weight: 400; }
-
-.listings .item.active .title,
-.listings .item .title:hover { color: #eae3dc; }
-
-.listings .item.active {
-  background-color: #f8f8f8;
-}
-
-::-webkit-scrollbar {
-  width: 3px;
-  height: 3px;
-  border-left: 0;
-  background: rgba(0, 0, 0, 0.1);
-}
-
-::-webkit-scrollbar-track {
-  background: none;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #00853e;
-  border-radius: 0;
-}
-      
-.marker {
-  border: none;
-  cursor: pointer;
-  height: 56px;
-  width: 56px;
-  background-image: url(marker.png);
-}
-      
-/* Marker tweaks */
-      
-/*.mapboxgl-popup {
-  padding-bottom: 50px;
-} */
-      
-.mapboxgl-popup-close-button {
-  display: none;
-}
-
-.mapboxgl-popup-content {
-  font: 400 15px/22px 'Crimson Italic', 'Crimson Italic', serif;
-  padding: 0;
-  width: 180px;
-}
-
-.mapboxgl-popup-content h3 {
-  background: #cddcde;
-  color: #fff;
-  margin: 0;
-  padding: 10px;
-  border-radius: 3px 3px 0 0;
-  font-weight: 700;
-  margin-top: -15px;
-}
-
-.mapboxgl-popup-content h4 {
-  margin: 0;
-  padding: 10px;
-  font-weight: 400;
-}
-
-.mapboxgl-popup-content div {
-  padding: 10px;
-}
-
-.mapboxgl-popup-anchor-top > .mapboxgl-popup-content {
-  margin-top: 15px;
-}
-
-.mapboxgl-popup-anchor-top > .mapboxgl-popup-tip {
-  border-bottom-color: #cddcde;
-}     
-
-</style>
-</head>
-
-<body>
-<div class='sidebar'>
-  <div class='heading'>
-    <h1>Local Florists</h1>
-  </div>
-  <div id='listings' class='listings'></div>
-</div>
-<div id="map" class="map"></div>
-<div id='map'></div>
-<script src="store.js"></script>
-<!-- <script>
-
 mapboxgl.accessToken = 'pk.eyJ1IjoiYXd3LWhhbGUtbmFoIiwiYSI6ImNqc293em84azAyaTU0M3A2bWJtZGEwNTIifQ.TuzMm3FyjpufA_WOlHkqNA';
 
 const map = new mapboxgl.Map({
@@ -406,7 +228,7 @@ function addMarkers() {
   listing.classList.add('active');
 });
   }
-}
+};
   
 function buildLocationList(stores) {
   for (const store of stores.features) {
@@ -456,7 +278,7 @@ function flyToStore(currentFeature) {
     center: currentFeature.geometry.coordinates,
     zoom: 15
   });
-}
+};
 
 function createPopUp(currentFeature) {
   const popUps = document.getElementsByClassName('mapboxgl-popup');
@@ -468,7 +290,3 @@ function createPopUp(currentFeature) {
     .setHTML(`<h3>Florist</h3><h4>${currentFeature.properties.name}</h4><h4>${currentFeature.properties.address}</h4><h4>${currentFeature.properties.phoneFormatted}</h4>`)
     .addTo(map);
 };
-</script> -->
-
-</body>
-</html>
